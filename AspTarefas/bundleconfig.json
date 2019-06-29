@@ -1,0 +1,19 @@
+[
+  {
+    "outputFileName": "wwwroot/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundle.js",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "wwwroot/lib/jquery-validation/dist/jquery.validate.js"
+    ]
+  }
+]
