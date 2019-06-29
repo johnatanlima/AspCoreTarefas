@@ -27,6 +27,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 Migrations/*
+appsettings.*
 
 # Visual Studio 2015 cache/options directory
 .vs/
