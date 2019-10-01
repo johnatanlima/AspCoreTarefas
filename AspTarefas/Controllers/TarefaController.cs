@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspTarefas.Data;
 using AspTarefas.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace AspTarefas.Controllers
 {
@@ -54,15 +56,36 @@ namespace AspTarefas.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TarefaId,Nome,Descricao,Inicio,Fim,Importancia")] Tarefa tarefa)
+        public async Task<IActionResult> Create([Bind("TarefaId,Nome,Descricao,Inicio,Fim,Importancia,Foto")] Tarefa tarefa, IFormFile foto)
         {
             if (ModelState.IsValid)
             {
+                if (foto != null)
+                {
+                    byte[] b;
+                    using (var or = foto.OpenReadStream())
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            or.CopyTo(ms);
+                            b = ms.ToArray();
+                        }
+                    }
+                    tarefa.Foto = b;
+                }
+
                 _context.Add(tarefa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(tarefa);
+        }
+
+        public IActionResult pegarFoto(int id)
+        {
+            byte[] b = _context.Tarefas.Find(id).Foto;
+
+            return File(b, "image/jpg");
         }
 
         // GET: Tarefa/Edit/5
