@@ -14,11 +14,15 @@ namespace AspTarefas.Models
 
         public string Descricao { get; set; }
 
+
+        [DataType(DataType.DateTime)]
         public DateTime Inicio { get; set; }
 
+        [DataType(DataType.DateTime)]
         public DateTime Fim { get; set; }
 
         public string Importancia { get; set; }
 
+        public byte[] Foto {get; set;}
     }
 }
