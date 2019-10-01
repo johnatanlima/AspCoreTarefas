@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Importancia)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto).ToString()
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -60,6 +63,9 @@
                     <td class="text-danger">@Html.DisplayFor(modelItem => item.Importancia)</td>
                  }
 
+            <td>
+                <img src="@Url.Action("pegarFoto", "Tarefa", new {id = item.TarefaId} )" />
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TarefaId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TarefaId">Details</a> |

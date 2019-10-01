@@ -23,6 +23,7 @@ namespace AspTarefas.Models
 
         public string Importancia { get; set; }
 
+        // testar depois [DataType(DataType.Upload)]
         public byte[] Foto {get; set;}
     }
 }
